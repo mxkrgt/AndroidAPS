@@ -16,6 +16,13 @@ class Objective2 @Inject constructor(
 ) : Objective(preferences, rh, dateUtil, "exam", R.string.objectives_exam_objective, R.string.objectives_exam_gate) {
 
     init {
+        startedOn = 1L
+        accomplishedOn = 1L
+    }
+
+    // Exam tasks preserved for reference but not loaded
+    /*
+    private fun examTasks() {
         tasks.add(
             ExamTask(this, R.string.prerequisites_label, R.string.prerequisites_what, "prerequisites")
                 .option(Option(R.string.prerequisites_nightscout, true))
@@ -293,4 +300,5 @@ class Objective2 @Inject constructor(
             if (!task.isCompleted()) accomplishedOn = 0
         }
     }
+    */
 }

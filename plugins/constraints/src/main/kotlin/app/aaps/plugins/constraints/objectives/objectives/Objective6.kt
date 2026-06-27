@@ -22,19 +22,7 @@ class Objective6 @Inject constructor(
 ) : Objective(preferences, rh, dateUtil, "maxiob", R.string.objectives_maxiob_objective, R.string.objectives_maxiob_gate) {
 
     init {
-        tasks.add(MinimumDurationTask(this, T.days(1).msecs()))
-        tasks.add(
-            object : Task(this, R.string.closedmodeenabled) {
-                override fun isCompleted(): Boolean = loop.runningMode == RM.Mode.CLOSED_LOOP
-            })
-        tasks.add(
-            object : Task(this, R.string.maxiobset) {
-
-                override fun isCompleted(): Boolean {
-                    val maxIOB = constraintChecker.getMaxIOBAllowed().value()
-                    return maxIOB > 0
-                }
-            }.learned(Learned(R.string.objectives_maxiob_learned))
-        )
+        startedOn = 1L
+        accomplishedOn = 1L
     }
 }
