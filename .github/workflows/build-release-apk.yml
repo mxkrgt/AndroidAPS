@@ -47,14 +47,15 @@ jobs:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
+          # ubuntu-latest has 7GB RAM total; keep Gradle + Kotlin daemon within ~5.5GB
           ./gradlew :app:assemble${{ github.event.inputs.buildVariant }} \
             -Pandroid.injected.signing.store.file="$KEYSTORE_PATH" \
             -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
             -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
             -Pandroid.injected.signing.key.password="$KEY_PASSWORD" \
-            -Dorg.gradle.jvmargs="-Xmx8g -XX:+UseParallelGC" \
-            -Dkotlin.daemon.jvm.options="-Xmx2g" \
-            -Dkotlin.compiler.execution.strategy="in-process"
+            -Dorg.gradle.jvmargs="-Xmx3g -XX:+UseParallelGC -Xss4m" \
+            -Dkotlin.daemon.jvm.options="-Xmx2g -Xss4m" \
+            -Dorg.gradle.workers.max=2
 
       - name: Find APK
         run: |
