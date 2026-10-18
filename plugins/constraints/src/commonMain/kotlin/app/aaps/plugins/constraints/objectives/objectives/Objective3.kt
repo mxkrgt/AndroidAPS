@@ -41,6 +41,9 @@ class Objective3(
                     else preferences.get(IntNonKey.ObjectivesManualEnacts).toString() + " / " + MANUAL_ENACTS_NEEDED
             }.learned(Learned(ConstraintsStrings.objectives_openloop_learned))
         )
+        // Skip: auto-mark as accomplished
+        startedOn = 1L
+        accomplishedOn = 1L
     }
 
     companion object {

@@ -104,5 +104,8 @@ class Objective0(
                 }
             }
         )
+        // Skip: auto-mark as accomplished
+        startedOn = 1L
+        accomplishedOn = 1L
     }
 }
