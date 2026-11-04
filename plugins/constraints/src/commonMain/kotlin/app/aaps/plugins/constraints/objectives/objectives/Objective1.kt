@@ -59,5 +59,8 @@ class Objective1(
             }.hint(Hint(ConstraintsStrings.usescale_hint))
                 .learned(Learned(ConstraintsStrings.objectives_usage_learned))
         )
+        // Skip: auto-mark as accomplished
+        startedOn = 1L
+        accomplishedOn = 1L
     }
 }

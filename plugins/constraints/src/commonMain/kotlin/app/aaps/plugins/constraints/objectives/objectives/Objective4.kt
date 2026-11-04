@@ -39,5 +39,8 @@ class Objective4(
                 }
             }.learned(Learned(ConstraintsStrings.objectives_maxbasal_learned))
         )
+        // Skip: auto-mark as accomplished
+        startedOn = 1L
+        accomplishedOn = 1L
     }
 }

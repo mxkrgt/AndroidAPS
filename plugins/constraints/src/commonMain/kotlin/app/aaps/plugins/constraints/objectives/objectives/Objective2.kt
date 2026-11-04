@@ -332,5 +332,8 @@ class Objective2(
         for (task in tasks) {
             if (!(task as ExamTask).answered) accomplishedOn = 0
         }
+        // Skip: auto-mark as accomplished
+        startedOn = 1L
+        accomplishedOn = 1L
     }
 }
